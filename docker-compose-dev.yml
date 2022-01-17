@@ -1,0 +1,31 @@
+version: "3"
+services:
+  api:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=social_media
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=91cdf92cd5a3e12f1a4aa98f179d66eb56f58277096782e85daa65daaa596d23
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+    volumes:
+      - ./:/usr/src/app:ro
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=social_media  
+
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:

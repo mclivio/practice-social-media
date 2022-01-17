@@ -1,1 +1,2 @@
-# practice-social-media
+#### Practice
+This is just something made following a youtube [course](https://www.youtube.com/watch?v=0sOvCWFmrtA) as a way of practising because it includes things I had learned in university plus some topics that weren't taught there like: Virtual Env, Hashing Passwords, JWT Token Basics, OAuth2, Env Variables, Alembic, Heroku, Docker and CI/CD
